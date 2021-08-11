@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ITCalc.Views.SuffixTextBox"
+             x:Name="this">
+  <ContentView.Content>
+      <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="{Binding Source={x:Reference this}, Path=Title}"
+                       VerticalTextAlignment="Center"
+                       FontSize="22"
+                       TextColor="#000"/>
+                <Entry Text="{Binding Source={x:Reference this}, Path=Text, Mode=TwoWay}"
+                       Grid.Column="1"
+                       Keyboard="Numeric"
+                       Focused="Text_Focused"
+                       Completed="Text_Completed"
+                       TextChanged="Text_Changed"/>
+                <Label Text="{Binding Source={x:Reference this}, Path=Suffix}"
+                       HorizontalOptions="EndAndExpand" 
+                       FontSize="22"
+                       Grid.Column="1"
+                       VerticalTextAlignment="Center"/>
+                <ImageButton Grid.Column="2"
+                       Source="{Binding Source={x:Reference this}, Path=SpecialIconSource}"
+                       WidthRequest="35" 
+                       BackgroundColor="Transparent"
+                       Clicked="SpecialIcon_Clicked"/>
+                <ImageButton Grid.Column="3"
+                       Source="{Binding Source={x:Reference this}, Path=HelpIconSource}"
+                       WidthRequest="35" 
+                       BackgroundColor="Transparent"
+                       Clicked="HelpIcon_Clicked"/>
+            </Grid>
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

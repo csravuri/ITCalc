@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ITCalc.Views.ReadOnlyText"
+             x:Name="this"
+             Margin="0"
+             Padding="0">
+  <ContentView.Content>        
+        <Frame Padding="0" 
+               BackgroundColor="Transparent">
+            <StackLayout Spacing="0"
+                       Margin="0">
+                <Label Text="{Binding Source={x:Reference this}, Path=Title}"
+                     FontSize="18"
+                     TextColor="{Binding Source={x:Reference this}, Path=TitleColor}"/>
+                <Label Text="{Binding Source={x:Reference this}, Path=Text}"
+                     FontSize="22"
+                     TextColor="{Binding Source={x:Reference this}, Path=TextColor}"
+                     FontAttributes="Bold"/>
+            </StackLayout>
+        </Frame>
+        
+    </ContentView.Content>
+</ContentView>

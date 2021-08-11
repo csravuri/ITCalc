@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:views="clr-namespace:ITCalc.Views"
+             x:Class="ITCalc.Views.ITCreation"
+             Title="Calculate Tax">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame Padding="5"
+                   HasShadow="True"
+                   CornerRadius="10"
+                   BackgroundColor="AntiqueWhite"
+                   Margin="5">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <views:ReadOnlyText Title="Net Income" Text="{Binding NetIncome}"
+                                        Grid.Row="0" Grid.Column="1"/>
+                    <views:ReadOnlyText Title="Deductions" Text="{Binding Deductions}"
+                                        Grid.Row="1" Grid.Column="0"/>
+                    <views:ReadOnlyText Title="Taxable Income" Text="{Binding TaxableIncome}"
+                                        Grid.Row="1" Grid.Column="1"/>
+                    <views:ReadOnlyText Title="Old Tax" Text="{Binding OldTax}"
+                                        Grid.Row="2" Grid.Column="0"/>
+                    <views:ReadOnlyText Title="New Tax" Text="{Binding NewTax}"
+                                        Grid.Row="2" Grid.Column="1"/>
+                    <Label Text="more..." 
+                           Padding="0,0,2,2" 
+                           Grid.Row="3" Grid.Column="1"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="#008729"
+                           HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+                
+            </Frame>
+            <ScrollView VerticalScrollBarVisibility="Never"
+                        Margin="5,2">
+                <StackLayout Spacing="0">
+
+                    <StackLayout Orientation="Horizontal" 
+                                 HorizontalOptions="FillAndExpand">
+                        <Label Text="Metro City"
+                               FontSize="22"
+                               TextColor="#000"/>
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="CenterAndExpand">
+
+                            <RadioButton GroupName="Metro" 
+                                         Content="Yes"
+                                         TextColor="#000"
+                                         FontSize="22"/>
+                            <RadioButton GroupName="Metro" 
+                                         IsChecked="{Binding IsNotMetro}"
+                                         Content="No"
+                                         TextColor="#000"
+                                         FontSize="22"/>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                    <Label Text="Income:"
+                           TextDecorations="Underline"
+                           TextColor="#000"
+                           FontSize="25"/>
+                    <views:SuffixTextBox Suffix="/year"
+                                         Text="{Binding Path=NetSalary}"
+                                         Title="Net Salary"
+                                         ControlName="NetSalary"
+                                         TextCompleted="Text_Completed"
+                                         TextChanged="Text_Completed"
+                                         SpecialIconSource="calender_icon.png"
+                                         SpecialIconClicked="Calender_Clicked"
+                                         HelpIconSource="help_icon.png"
+                                         HelpText="Net salary from main income source."
+                                         HelpIconClicked="Help_Clicked"/>
+                    <views:SuffixTextBox Suffix="/year"
+                                         Text="{Binding BankInterest}"
+                                         Title="Bank Interest"
+                                         ControlName="BankInterest"
+                                         TextCompleted="Text_Completed"
+                                         TextChanged="Text_Completed"
+                                         SpecialIconSource="calender_icon.png"
+                                         SpecialIconClicked="Calender_Clicked"
+                                         HelpIconSource="help_icon.png"
+                                         HelpText="Bank interest from FDs, RDs and etc."
+                                         HelpIconClicked="Help_Clicked"/>
+                    <views:SuffixTextBox Suffix="/year"
+                                         Text="{Binding OtherIncome}"
+                                         Title="Other"
+                                         ControlName="OtherIncome"
+                                         TextCompleted="Text_Completed"
+                                         TextChanged="Text_Completed"
+                                         SpecialIconSource="calender_icon.png"
+                                         HelpIconSource="help_icon.png"
+                                         HelpText="Income from anyother sources."
+                                         HelpIconClicked="Help_Clicked"/>
+                    <Label Text="Deductions:"
+                           TextDecorations="Underline"
+                           TextColor="#000"
+                           FontSize="25"/>
+
+                    <Label Text="80C:(Max: 1,50,000)"
+                           TextColor="#000"
+                           FontSize="19"/>
+                    
+                    <views:SuffixTextBox Suffix="/year"
+                                         Text="{Binding EPF}"
+                                         Title="EPF"
+                                         ControlName="EPF"
+                                         TextCompleted="Text_Completed"
+                                         TextChanged="Text_Completed"
+                                         SpecialIconSource="calender_icon.png"
+                                         HelpIconSource="help_icon.png"/>
+
+                    <views:SuffixTextBox Suffix="/year"
+                                         Text="{Binding ProfessionalTax}"
+                                         Title="ProfessionalTax"
+                                         ControlName="ProfessionalTax"
+                                         TextCompleted="Text_Completed"
+                                         TextChanged="Text_Completed"
+                                         SpecialIconSource="calender_icon.png"
+                                         HelpIconSource="help_icon.png"/>
+
+                    <views:SuffixTextBox Suffix="/year"
+                                         Text="{Binding PPF}"
+                                         Title="PPF"
+                                         ControlName="PPF"
+                                         TextCompleted="Text_Completed"
+                                         TextChanged="Text_Completed"
+                                         SpecialIconSource="calender_icon.png"
+                                         HelpIconSource="help_icon.png"/>
+
+                    <views:SuffixTextBox Suffix="/year"
+                                         Text="{Binding Insurance}"
+                                         Title="Insurance"
+                                         ControlName="Insurance"
+                                         TextCompleted="Text_Completed"
+                                         TextChanged="Text_Completed"
+                                         SpecialIconSource="calender_icon.png"
+                                         HelpIconSource="help_icon.png"/>
+
+                    <views:SuffixTextBox Suffix="/year"
+                                         Text="{Binding Other80C}"
+                                         Title="Other"
+                                         ControlName="Other80C"
+                                         TextCompleted="Text_Completed"
+                                         TextChanged="Text_Completed"
+                                         SpecialIconSource="calender_icon.png"
+                                         HelpIconSource="help_icon.png"/>
+
+                    <Label Text="Others"
+                           TextColor="#000"
+                           FontSize="19"/>
+
+                    <views:SuffixTextBox Suffix="/year"
+                                         Text="{Binding HRA}"
+                                         Title="HRA"
+                                         ControlName="HRA"
+                                         TextCompleted="Text_Completed"
+                                         TextChanged="Text_Completed"
+                                         SpecialIconSource="calculator_icon.png"
+                                         HelpIconSource="help_icon.png"/>
+
+                    <views:SuffixTextBox Suffix="/year"
+                                         Text="{Binding StandardDeduction}"
+                                         Title="Standard Deduction"
+                                         ControlName="StandardDeduction"
+                                         IsEnabled="False"
+                                         HelpIconSource="help_icon.png"/>
+
+                </StackLayout>
+                
+            </ScrollView>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="EndAndExpand"
+                         Spacing="20"
+                         Padding="10,5">
+                <Button Text="Reset" Command="{Binding ResetClickedCommand}" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Save" Command="{Binding SaveClickedCommand}" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
